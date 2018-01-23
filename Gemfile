@@ -8,6 +8,7 @@ gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
+gem 'pg', '~> 0.18'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -40,7 +41,6 @@ gem 'groupdate', '~> 3.2'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'sqlite3'
   gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 end
 
@@ -49,9 +49,6 @@ group :development do
   gem 'web-console'
 end
 
-group :production do
-	gem 'pg'
-end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
