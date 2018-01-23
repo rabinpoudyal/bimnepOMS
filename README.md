@@ -2,12 +2,11 @@
 
 ## About this application
 
-This application is created by MD INZAMUL HAQUE for INFORTECH Solutions. This is a simple order management system. <br>
+This application is created by Rabin for Bimnep ecommerce. This is a simple order management system. <br>
 ##### Framework: Ruby on Rails 5.0
 ##### Language : Ruby 2.2.4
 
-## Demo
-https://www.youtube.com/watch?v=74vZmYu7dV0
+
 
 ## Install
 - Install all gems by typing this:
@@ -20,9 +19,6 @@ bundle install
 ```
 rake db:migrate
 ```
-- Login:
-	Username: inzamul36@live.com<br>
-	Password: 123456asdfgh
 
 - To Add new user go to "config/route.rb" change this line to 
 ```
@@ -52,5 +48,3 @@ and then go to /sign_up page by web browser. Fill the form.
 * etc...
 
 ### Contact me 
-Facebook: facebook.com/inzamul36 <br>
-Email: inzamul36@gmail.com, inzamuk36@live.com, inzamul36@yahoo.com    

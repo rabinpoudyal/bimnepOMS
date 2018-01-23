@@ -69,15 +69,61 @@
                           <h4 class="modal-title">Order Details</h4>
                         </div>
                         <div class="modal-body">
+                          <table width="100%">
+                            <tr>
+                              <th>Heading</th>
+                              <th>Details</th>
+                            </tr>
+                            <tr>
+                              <td>Name</td>
+                              <td><%= order.name %></td>
+                            </tr>
+                            <tr>
+                              <td>Order Status</td>
+                              <td><%= order.order_status %></td>
+                            </tr>
+                            <tr>
+                              <td>Amount</td>
+                              <td><%= order.amount %></td>
+                            </tr>
+                            <tr>
+                              <td>Phone</td>
+                              <td><%= order.phone %></td>
+                            </tr>
+                            <tr>
+                              <td>Address</td>
+                              <td><%= order.address %></td>
+                            </tr>
+                            <tr>
+                              <td>District</td>
+                              <td><%= order.district %></td>
+                            </tr>
+                            <tr>
+                              <td>Delivery Date</td>
+                              <td><%= order.delivery_date %></td>
+                            </tr>
+                            <tr>
+                              <td>Product Id</td>
+                              <td><%= order.product_id %></td>
+                            </tr>
+                            <tr>
+                              <td>Payment Option</td>
+                              <td><%= order.payment_option %></td>
+                            </tr>
+                            <tr>
+                              <td>Description</td>
+                              <td><%= order.description %></td>
+                            </tr>
+                          </table>
+                          <h2 class="text-center">Order Status: <b><%= order.order_status %></b></h2>
                           <p>Name: <b><%= order.name %></b></p>
                           <p>Phone: <b><%= order.phone %></b></p>
-                          <p>Address: <b><%= order.phone %></b></p>
+                          <p>Address: <b><%= order.address %></b></p>
                           <p>Delivery Date: <b><%= order.delivery_date %></b></p>
                           <p>Product Id: <b><%= order.product_id %></b></p>
                           <p>Payment Option: <b><%= order.payment_option %></b></p>
                           <p>Amount: <b><%= order.amount %></b></p>
                           <p>Description: <b><%= order.description %></b></p>
-                          <p>Address: <b><%= order.address %></b></p>
                           <p>District: <b><%= order.district %></b></p>
                         </div>
                         <div class="modal-footer">

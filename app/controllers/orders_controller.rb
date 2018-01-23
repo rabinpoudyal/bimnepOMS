@@ -15,11 +15,11 @@ class OrdersController < ApplicationController
   end
 
   def follow_up
-    @orders = Order.where(order_status: "Follow up")
+    @orders = Order.where(order_status: "Follow Up")
   end
 
-  def delivered_order
-    @orders = Order.where(order_status: "Delivered")
+  def packed_order
+    @orders = Order.where(order_status: "Packed")
   end
 
   def pending_order
