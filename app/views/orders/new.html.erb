@@ -52,6 +52,10 @@
                   <label>Select Payment Option</label>
                   <%= f.select :payment_option, options_for_select(['Postpay', 'Prepay (Full)', 'Prepay (Half)']), {}, {:class=>'form-control m-b', :required=>''} %>
                 </div>
+                <div class="form-group">
+                  <label>Select Payment Method</label>
+                  <%= f.select :payment_option, options_for_select(['Esewa', 'Cash On Delivery', 'Bank Transfer', 'Other']), {}, {:class=>'form-control m-b', :required=>''} %>
+                </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
@@ -67,7 +71,8 @@
               <div class="form-group">
                 <label class="col-sm-2">Status</label>
                 <div class="col-sm-10">
-                  <label class="checkbox-inline i-checks"> <%= f.radio_button :order_status, 'Cancelled', :class=>'icheckbox_square-green' %> Cancelled </label>
+                  <%= f.select :order_status, options_for_select(['Cancelled', 'Out of stock', 'Follow Up', 'Not Confrimed', 'Packed', 'Delivered', 'Pending', 'Returned', 'Incomplete Order']), {}, { :class => "form-control m-b", :required => '' } %>
+                  <!-- <label class="checkbox-inline i-checks"> <%= f.radio_button :order_status, 'Cancelled', :class=>'icheckbox_square-green' %> Cancelled </label>
                   <label class="checkbox-inline i-checks"> <%= f.radio_button :order_status, 'Out of stock', :class=>'icheckbox_square-green' %> Out of stock </label>
                   <label class="checkbox-inline i-checks"> <%= f.radio_button :order_status, 'Follow Up', :class=>'icheckbox_square-green' %> Follow Up </label>
                   <label class="checkbox-inline i-checks"> <%= f.radio_button :order_status, 'Not Confrimed', :class=>'icheckbox_square-green' %> Not Confrimed </label>
@@ -75,8 +80,7 @@
                   <label class="checkbox-inline i-checks"> <%= f.radio_button :order_status, 'Delivered', :class=>'icheckbox_square-green' %> Delivered </label>
                   <label class="checkbox-inline i-checks"> <%= f.radio_button :order_status, 'Pending', :class=>'icheckbox_square-green' %> Pending </label>
                   <label class="checkbox-inline i-checks"> <%= f.radio_button :order_status, 'Returned', :class=>'icheckbox_square-green' %> Returned </label>
-                  <label class="checkbox-inline i-checks"> <%= f.radio_button :order_status, 'Incomplete Order', :class=>'icheckbox_square-green' %> Incomplete Order </label>
-                  
+                  <label class="checkbox-inline i-checks"> <%= f.radio_button :order_status, 'Incomplete Order', :class=>'icheckbox_square-green' %> Incomplete Order </label>  -->
                 </div>
               </div>
             </div>
@@ -89,17 +93,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-"Achham","Arghakhanchi","Baglung","Baitadi","Bajhang","Bajura","Banke","Bara","Bardiya","Bhaktapur", "Bhojpur", "Chitwan", "Dadeldhura", "Dailekh", "Dang Deukhuri", "Darchula", "Dhading", "Dhankuta", "Dhanusa", "Dholkha", "Dolpa", "Doti", "Gorkha", "Gulmi", "Humla", "Ilam", "Jajarkot", "Jhapa", "Jumla", "Kailali", "Kalikot", "Kanchanpur", "Kapilvastu", "Kaski", "Kathmandu", "Kavrepalanchok", "Khotang", "Lalitpur", "Lamjung", "Mahottari", "Makwanpur", "Manang", "Morang", "Mugu", "Mustang", "Myagdi", "Nawalparasi", "Nuwakot", "Okhaldhunga", "Palpa", "Panchthar", "Parbat", "Parsa", "Pyuthan", "Ramechhap", "Rasuwa", "Rautahat", "Rolpa", "Rukum", "Rupandehi", "Salyan", "Sankhuwasabha", "Saptari", "Sarlahi", "Sindhuli", "Sindhupalchok", "Siraha", "Solukhumbu", "Sunsari", "Surkhet", "Syangja", "Tanahu", "Taplejung", "Terhathum", "Udayapur"

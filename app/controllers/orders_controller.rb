@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
   def index
     @orders = Order.all
     @orders_today = Order.where(delivery_date: Date.today, order_status: "Pending")
+    @follow_up_orders_today = Order.where(delivery_date: Date.today, order_status: "Follow Up")
   end
 
   def completed_order
@@ -56,7 +57,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(params.require(:order).permit(:name, :phone, :address, :delivery_date, :product_id, :payment_option, :amount, :order_status, :description, :district))
+    @order = Order.new(params.require(:order).permit(:name, :phone, :address, :delivery_date, :product_id, :payment_option,:payment_method, :amount, :order_status, :description, :district))
 
     if @order.save
       redirect_to orders_path, :notice=> 'Order was successfully created.'
@@ -72,7 +73,7 @@ class OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
 
-    if @order.update(params.require(:order).permit(:name, :phone, :address, :delivery_date, :product_id, :payment_option, :amount, :order_status, :description, :district))
+    if @order.update(params.require(:order).permit(:name, :phone, :address, :delivery_date, :product_id, :payment_option,:payment_method, :amount, :order_status, :description, :district))
       redirect_to orders_path, :notice=> 'Order was successfully updated.'
     else
       redirect_to new_order_path, :alert=> 'Error! Please try again'
