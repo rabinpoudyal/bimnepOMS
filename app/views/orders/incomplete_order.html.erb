@@ -1,0 +1,178 @@
+<% content_for :title, "Incomplete Orders" %>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="ibox float-e-margins">
+      <div class="ibox-title">
+        <h5>Incomplete Orders Data</h5>
+        <div class="ibox-tools">
+          <a class="collapse-link">
+            <i class="fa fa-chevron-up"></i>
+          </a>
+          <a class="close-link">
+            <i class="fa fa-times"></i>
+          </a>
+        </div>
+      </div>
+      <div class="ibox-content">
+
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover dataTables-example">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Delivery Date</th>
+                <th>Product</th>
+                <th>Payment Option</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th width="101px">Actions</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+            <% @orders.each do |order| %>
+
+              <tr class="">
+                <td><%= order.name %></td>
+                <td><%= order.phone %></td>
+                <td><%= order.address %><br>-<%= order.district %></td>
+                <td><%= order.delivery_date %></td>
+                <td><%= order.product_id %></td>
+                <td><%= order.payment_option %></td>
+                <td><%= order.amount %></td>
+                <td><span class="badge badge-primary"> <%= order.order_status %></span>
+                  <span class="btn btn-sm btn-white btn-bitbucket" data-toggle="modal" data-target="#myModalUpdate<%= order.id %>" ><span class="fa fa-pencil-square-o"></span></span>
+                  <div id="myModalUpdate<%= order.id %>" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">Update Order Status</h4>
+                        </div>
+                        <div class="modal-body">
+                          <%= form_for(order) do |o| %>
+                            <%= o.label :order_status %>
+                            <%= o.select :order_status, options_for_select([ ["Pending"],["Cancelled"],["Returned"],["Follow Up"],["Out of stock"], ["Not Confrimed"], ["Packed"], ["Delivered"], ["Incomplete Order"] ], :selected => o.object.order_status), { :class => "btn btn-primary" } %>
+                            <%= o.submit "Update", class: "btn btn-primary" %>
+                            <%#= o.order_status %>
+                          <% end %>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <%= link_to order_path(order.id), :class=>'btn btn-white btn-bitbucket', method: :delete, data: {confirm: 'Are you sure?'} do %>
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                  <% end %>
+                  <%= link_to edit_order_path(order.id), :class=>'btn btn-white btn-bitbucket' do %>
+                      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                  <% end %>
+                  <%= link_to order_path(order.id), :class=>'btn btn-white btn-bitbucket' do %>
+                      <i class="fa fa-print" aria-hidden="true"></i>
+                  <% end %>
+                  <span class="btn btn-white btn-bitbucket" data-toggle="modal" data-target="#myModal_<%= order.id %>" ><span class="fa fa-eye"></span></span>
+
+                  <div id="myModal_<%= order.id %>" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">Order Details</h4>
+                        </div>
+                        <div class="modal-body">
+                          <h2 class="text-center">Order Status: <b><%= order.order_status %></b></h2>
+                          <table width="100%">
+                            <tr>
+                              <th>Heading</th>
+                              <th>Details</th>
+                            </tr>
+                            <tr>
+                              <td>Name</td>
+                              <td><%= order.name %></td>
+                            </tr>
+                            <tr>
+                              <td>Order Status</td>
+                              <td><%= order.order_status %></td>
+                            </tr>
+                            <tr>
+                              <td>Amount</td>
+                              <td><%= order.amount %></td>
+                            </tr>
+                            <tr>
+                              <td>Phone</td>
+                              <td><%= order.phone %></td>
+                            </tr>
+                            <tr>
+                              <td>Address</td>
+                              <td><%= order.address %></td>
+                            </tr>
+                            <tr>
+                              <td>District</td>
+                              <td><%= order.district %></td>
+                            </tr>
+                            <tr>
+                              <td>Delivery Date</td>
+                              <td><%= order.delivery_date %></td>
+                            </tr>
+                            <tr>
+                              <td>Product Id</td>
+                              <td><%= order.product_id %></td>
+                            </tr>
+                            <tr>
+                              <td>Payment Option</td>
+                              <td><%= order.payment_option %></td>
+                            </tr>
+                          </table>
+                          <h3 class="h4 text-center"><b>Order Description</b></h3><br/>
+                          <p><%= order.description %></p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </td>
+              </tr>
+
+            <% end %>
+
+            </tbody>
+
+            <tfoot>
+              <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Delivery Date</th>
+                <th>Product</th>
+                <th>Payment Option</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+

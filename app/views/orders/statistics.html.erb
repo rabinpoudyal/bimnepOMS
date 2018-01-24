@@ -1,3 +1,31 @@
 <% content_for :title, "Metrics & Statistics" %>
-<%= line_chart Order.group_by_day(:created_at).count %>
 
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-8">
+    <h2>Order Statistics</h2>
+    <ol class="breadcrumb">
+      <li>
+        <%= link_to 'Home', orders_path%>
+      </li>
+      <li class="active">
+        <strong>Statistics</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="ibox-content">
+  	<div class="row">
+  		<div class="col-md-12">
+  			<h2 class="h2 text-center">Incomming Orders Graph(Date vs Count)</h2>
+  			<%= line_chart Order.group_by_day(:created_at).count %>	
+  		</div>
+  	</div>
+  	<div class="row">
+  		<div class="col-md-12">
+  			<h2 class="h2 text-center">Bar Graph representation</h2>
+  			<%= column_chart Order.group(:district).count %>
+  		</div>
+  	</div>  	
+  </div>
+
+
+</div>

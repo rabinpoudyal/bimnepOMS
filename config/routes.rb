@@ -15,6 +15,9 @@ Rails.application.routes.draw do
  	get '/pending' => 'orders#pending_order'
  	get '/out_of_stock' => 'orders#out_of_stock'
  	get '/statistics' => 'orders#statistics'
+ 	get '/returned' => 'orders#returned'
+ 	get '/not_confrimed_order' => 'orders#not_confrimed_order'
+ 	get '/incomplete_order' => 'orders#incomplete_order'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

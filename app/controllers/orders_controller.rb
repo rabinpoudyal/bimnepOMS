@@ -30,6 +30,18 @@ class OrdersController < ApplicationController
     @orders = Order.where(order_status: "Out of stock")
   end
 
+  def returned
+    @orders = Order.where(order_status: "Returned")
+  end
+
+  def incomplete_order
+    @orders = Order.where(order_status: "Incomplete Order")
+  end
+
+  def not_confrimed_order
+    @orders = Order.where(order_status: "Not Confrimed")
+  end
+
   def statistics
     
   end
