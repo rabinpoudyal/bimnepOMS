@@ -5,30 +5,27 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: mysql2
-  encoding: utf8
-  database: bimnep_ordermgmt
-  username: bimnep_bimnepoms
-  password: 0LAG7u08;XTR
-  host: 172.82.166.194
-  port: 3306
+  adapter: postgresql
+  username: bimnepoms
+  password: bimnepoms
+  host: localhost
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
-  #database: bimnepoms_development
+  database: bimnepoms_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  #database: bimnepoms_test
+  database: bimnepoms_test
 
 production:
   <<: *default
-  #database: bimnepoms_production
-  #username: bimnepoms
-  #password: <%= ENV['BIMNEP_DATABASE_PASSWORD'] %>
+  database: bimnepoms_production
+  username: bimnepoms
+  password: <%= ENV['BIMNEP_DATABASE_PASSWORD'] %>
