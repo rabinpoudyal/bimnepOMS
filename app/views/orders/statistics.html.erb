@@ -24,7 +24,13 @@
   			<h2 class="h2 text-center">Bar Graph representation</h2>
   			<%= column_chart Order.group(:district).count %>
   		</div>
-  	</div>  	
+  	</div>  
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="h2 text-center">Order status</h2>
+        <%= column_chart Order.group(:order_status).count %>
+      </div>
+    </div>	
   </div>
 
 

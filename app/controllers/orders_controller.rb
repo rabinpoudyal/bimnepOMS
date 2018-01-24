@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.all
+    @orders_today = Order.where(delivery_date: Date.today, order_status: "Pending")
   end
 
   def completed_order
