@@ -36,6 +36,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'chartkick', '~> 2.2', '>= 2.2.5'
 gem 'groupdate', '~> 3.2'
+gem 'bootstrap-sass', '~> 3.3.7'
+
 
 
 group :development, :test do
