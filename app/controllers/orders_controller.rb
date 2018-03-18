@@ -78,7 +78,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
 
     if @order.update(params.require(:order).permit(:name, :phone, :address, :delivery_date, :product_id, :payment_option,:payment_method, :amount, :order_status, :description, :district))
-      redirect_to "/#{@order.order_status.downcase.parameterize.underscore}", :notice=> 'Order was successfully updated.'
+      redirect_to :back, :notice=> 'Order was successfully updated.'
     else
       redirect_to new_order_path, :alert=> 'Error! Please try again'
     end
