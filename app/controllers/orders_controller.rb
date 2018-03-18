@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.all
-    @orders_today = Order.where(delivery_date: Date.today, order_status: "Pending")
+    #@orders_today = Order.where(delivery_date: Date.today, order_status: "Pending")
     @follow_up_orders_today = Order.where(delivery_date: Date.today, order_status: "Follow Up")
   end
 
@@ -74,7 +74,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
 
     if @order.update(params.require(:order).permit(:name, :phone, :address, :delivery_date, :product_id, :payment_option,:payment_method, :amount, :order_status, :description, :district))
-      redirect_to orders_path, :notice=> 'Order was successfully updated.'
+      redirect_to "/#{@order.order_status.downcase.parameterize.underscore}", :notice=> 'Order was successfully updated.'
     else
       redirect_to new_order_path, :alert=> 'Error! Please try again'
     end
