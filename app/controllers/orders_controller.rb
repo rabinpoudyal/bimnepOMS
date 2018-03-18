@@ -36,6 +36,10 @@ class OrdersController < ApplicationController
     @orders = Order.where(order_status: "Returned")
   end
 
+  def delivered
+    @orders = Order.where(order_status: "Delivered")
+  end
+
   def incomplete_order
     @orders = Order.where(order_status: "Incomplete Order")
   end
